@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    restart: always
+    ports:
+      - 8000:8000
+
+  rabbitmq:
+    image: rabbitmq:3.11.2-management-alpine
+    restart: always
+    ports:
+      - 15672:15672
+
+  celery:
+    build:
+      context: .
+      dockerfile: celery_worker.dockerfile
+    restart: always
+    depends_on:
+      - rabbitmq
+
+  flower:
+    image: mher/flower:1.2
+    environment:
+      - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672//
+    restart: always
+    ports:
+      - 5555:5555
+    depends_on:
+      - celery
+      - rabbitmq
