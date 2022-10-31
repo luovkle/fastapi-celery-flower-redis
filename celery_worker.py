@@ -6,7 +6,7 @@ from celery.utils.log import get_task_logger
 
 celery = Celery(
     "tasks",
-    broker="amqp://guest:guest@rabbitmq:5672//",
+    broker="redis://redis:6379/0",
     backend="redis://redis:6379/0",
 )
 

@@ -1,4 +1,4 @@
-# fastapi-celery-flower-rabbitmq
+# fastapi-celery-flower-redis
 
 This repository is intended to show an example of how to connect fastapi with celery and flower, in docker containers.
 
@@ -11,8 +11,8 @@ This repository is intended to show an example of how to connect fastapi with ce
 ## Running servers
 
 ```sh
-git clone https://github.com/luovkle/fastapi-celery-flower-rabbitmq
-cd fastapi-celery-flower-rabbitmq
+git clone https://github.com/luovkle/fastapi-celery-flower-redis
+cd fastapi-celery-flower-redis
 docker-compose up -d
 ```
 
@@ -22,6 +22,3 @@ To access the services you have to access the following addresses from your web 
 
 - **fastapi:** localhost:8000
 - **flower:** localhost:5555
-- **rabbitmq:** localhost:15672
-
-The username and password for rabbitmq are **guest** for both fields.
