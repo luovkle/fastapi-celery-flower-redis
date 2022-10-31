@@ -15,6 +15,10 @@ services:
     ports:
       - 15672:15672
 
+  redis:
+    image: redis:alpine
+    restart: always
+
   celery:
     build:
       context: .
@@ -22,6 +26,7 @@ services:
     restart: always
     depends_on:
       - rabbitmq
+      - redis
 
   flower:
     image: mher/flower:1.2

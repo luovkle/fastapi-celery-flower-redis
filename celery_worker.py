@@ -4,7 +4,11 @@ import random
 from celery import Celery
 from celery.utils.log import get_task_logger
 
-celery = Celery("tasks", broker="amqp://guest:guest@rabbitmq:5672//")
+celery = Celery(
+    "tasks",
+    broker="amqp://guest:guest@rabbitmq:5672//",
+    backend="redis://redis:6379/0",
+)
 
 celery_log = get_task_logger(__name__)
 
